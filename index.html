@@ -13,37 +13,20 @@
 
     <style>
 
-        *{
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
     
         body{
             font-size: 16px;
             background: #fff;
             font-family: "Roboto";
-            overflow: hidden;
             overflow-x: hidden;
     
         }
-    
-        /* .container{
-            width: 800px;
-            height: 500px;
-            background: #fff;
-            padding: 40px;
-            margin: 20px auto;
-        } */
-    
+        
         .formulario{
         
-            overflow-y: scroll;
-            /* width: 800px; */
-            height: 500px;
             background: #fff;
-            /* padding: 40px; */
             text-align: center;
+            height: 80vh;
             
             
         }
@@ -102,6 +85,8 @@
             background-color: blue;
             z-index: 1;
             cursor: pointer;
+            height: 20vh;
+            
             
         }
     
@@ -109,6 +94,7 @@
             background-color: blue;
             z-index: 1;
             cursor: pointer;
+            height: 20vh;
         }
     
         .p-carousel{
@@ -199,100 +185,103 @@
                 <div id="myCarousel" class="carousel slide"  data-interval="false">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <div class="caja checkbox formulario ">
+                        <div class="formulario d-flex justify-content-center pt-2 ">
+                            <div class="bg-danger" style="overflow-y: scroll; position: relative; width: 30rem; border: 3px solid black; padding: 10px;">
+                                <div class="card-header ">
+                                    <h3 class="d-flex justify-content-center text-light"> <b>Indicador: Cabeza</b></h3>
+                                    <h5 class="p-carousel text-light">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                                </div>  
+                                <ul class="list-group list-group-flush d-flex justify-content-center">
+                                    <li class="list-group-item"><input id="opt1" type="checkbox" onclick="checkData()">
+                                    <label for="opt1" >Dibujada en primer lugar</label></li>
 
-                            <h3 class="d-flex justify-content-center"> <b>Indicador: Cabeza</b></h3>
-                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
-                            
-                            <input id="opt1" type="checkbox" onclick="checkData()">
-                            <label for="opt1" >Dibujada en primer lugar</label><br>
+                                    <li class="list-group-item"><input id="opt2" type="checkbox" onclick="checkData()">
+                                    <label for="opt2">Énfasis</label></li>
 
-                            <input id="opt2" type="checkbox" onclick="checkData()">
-                            <label for="opt2">Énfasis</label><br>
+                                    <li class="list-group-item"><input id="opt3" type="checkbox" onclick="checkData()">
+                                    <label for="opt3">Notablemente agrandada</label></li>
 
-                            <input id="opt3" type="checkbox" onclick="checkData()">
-                            <label for="opt3">Notablemente agrandada</label><br>
+                                    <li class="list-group-item"><input id="opt4" type="checkbox" onclick="checkData()">
+                                    <label for="opt4">Grande</label></li>
 
-                            <input id="opt4" type="checkbox" onclick="checkData()">
-                            <label for="opt4">Grande</label><br>
+                                    <li class="list-group-item"><input id="opt5" type="checkbox" onclick="checkData()">
+                                    <label for="opt5">Grande y rendonda</label></li>
 
-                            <input id="opt5" type="checkbox" onclick="checkData()">
-                            <label for="opt5">Grande y rendonda</label><br>
+                                    <li class="list-group-item"><input id="opt6" type="checkbox" onclick="checkData()">
+                                    <label for="opt6">Excesivamente grande</label></li>
 
-                            <input id="opt6" type="checkbox" onclick="checkData()">
-                            <label for="opt6">Excesivamente grande</label><br>
+                                    <li class="list-group-item"><input id="opt7" type="checkbox" onclick="checkData()">
+                                    <label for="opt7">Pequeña</label></li>
 
-                            <input id="opt7" type="checkbox" onclick="checkData()">
-                            <label for="opt7">Pequeña</label><br>
+                                    <li class="list-group-item"><input id="opt8" type="checkbox" onclick="checkData()">
+                                    <label for="opt8">Hacia delante</label></li>
 
-                            <input id="opt8" type="checkbox" onclick="checkData()">
-                            <label for="opt8">Hacia delante</label><br>
+                                    <li class="list-group-item"><input id="opt9" type="checkbox" onclick="checkData()">
+                                    <label for="opt9">Inclinada hacia abajo</label></li>
 
-                            <input id="opt9" type="checkbox" onclick="checkData()">
-                            <label for="opt9">Inclinada hacia abajo</label><br>
+                                    <li class="list-group-item"><input id="opt10" type="checkbox" onclick="checkData()">
+                                    <label for="opt10">Inclinada hacia la derecha</label></li>
 
-                            <input id="opt10" type="checkbox" onclick="checkData()">
-                            <label for="opt10">Inclinada hacia la derecha</label><br>
+                                    <li class="list-group-item"><input id="opt11" type="checkbox" onclick="checkData()">
+                                    <label for="opt11">Baja y brazo caído</label></li>
 
-                            <input id="opt11" type="checkbox" onclick="checkData()">
-                            <label for="opt11">Baja y brazo caído</label><br>
+                                    <li class="list-group-item"><input id="opt12" type="checkbox" onclick="checkData()">
+                                    <label for="opt12">Trazo intenso </label>
 
-                            <input id="opt12" type="checkbox" onclick="checkData()">
-                            <label for="opt12">Trazo intenso </label><br>
+                                    <li class="list-group-item"><input id="opt13" type="checkbox" onclick="checkData()">
+                                    <label for="opt13">Vistas frontas y lateral simultáneas</label></li>
 
-                            <input id="opt13" type="checkbox" onclick="checkData()">
-                            <label for="opt13">Vistas frontas y lateral simultáneas</label><br>
+                                    <li class="list-group-item"><input id="opt14" type="checkbox" onclick="checkData()">
+                                    <label for="opt14">Geométrica</label></li>
 
-                            <input id="opt14" type="checkbox" onclick="checkData()">
-                            <label for="opt14">Geométrica</label><br>
+                                    <li class="list-group-item"><input id="opt15" type="checkbox" onclick="checkData()">
+                                    <label for="opt15">Último rasgo dibujado</label></li>
 
-                            <input id="opt15" type="checkbox" onclick="checkData()">
-                            <label for="opt15">Último rasgo dibujado</label><br>
-
-                            <input id="opt16" type="checkbox" onclick="checkData()">
-                            <label for="opt16">Trazo tenue</label><br><br>
-                            
+                                    <li class="list-group-item"><input id="opt16" type="checkbox" onclick="checkData()">
+                                    <label for="opt16">Trazo tenue</label></li><br><br>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Rostro</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
                             
                             <input id="opt17" type="checkbox" onclick="checkData()">
-                            <label for="opt17" >Expresivo</label><br>
+                            <label for="opt17" >Expresivo</label>
 
                             <input id="opt18" type="checkbox" onclick="checkData()">
-                            <label for="opt18">De perfil</label><br>
+                            <label for="opt18">De perfil</label>
 
                             <input id="opt19" type="checkbox" onclick="checkData()">
-                            <label for="opt19">Mirada firme y dura</label><br>
+                            <label for="opt19">Mirada firme y dura</label>
 
                             <input id="opt20" type="checkbox" onclick="checkData()">
-                            <label for="opt20">Énfasis</label><br>
+                            <label for="opt20">Énfasis</label>
 
                             <input id="opt21" type="checkbox" onclick="checkData()">
-                            <label for="opt21">Con arrugas</label><br>
+                            <label for="opt21">Con arrugas</label>
 
                             <input id="opt22" type="checkbox" onclick="checkData()">
-                            <label for="opt22">Rasgos faciales omitidos (cara vacía)</label><br>
+                            <label for="opt22">Rasgos faciales omitidos (cara vacía)</label>
 
                             <input id="opt23" type="checkbox" onclick="checkData()">
-                            <label for="opt23">Duplicidad facial (doble cara de frente y de perfil a la vez como un todo)</label><br>
+                            <label for="opt23">Duplicidad facial (doble cara de frente y de perfil a la vez como un todo)</label>
 
                             <input id="opt24" type="checkbox" onclick="checkData()">
-                            <label for="opt24">Mejor parte del dibujo</label><br>
+                            <label for="opt24">Mejor parte del dibujo</label>
 
                             <input id="opt25" type="checkbox" onclick="checkData()">
-                            <label for="opt25">Peor parte del dibujo</label><br>
+                            <label for="opt25">Peor parte del dibujo</label>
 
                             <input id="opt26" type="checkbox" onclick="checkData()">
-                            <label for="opt26">Último rasgo dibujado</label><br>
+                            <label for="opt26">Último rasgo dibujado</label>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Expresión facial</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -327,7 +316,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Boca</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -365,7 +354,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Labios</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -394,7 +383,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Quijada</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -429,7 +418,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Ojos</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -506,7 +495,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Pelo</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -586,7 +575,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Cejas</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -615,7 +604,7 @@
                     </div>
 
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Orejas</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -636,7 +625,7 @@
                     </div>
 
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Nariz</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -686,7 +675,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Cuello</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -724,7 +713,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Brazos</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -771,7 +760,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Manos</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -809,7 +798,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Dedos de la mano</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -862,7 +851,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Piernas</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -897,7 +886,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Pies</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -947,7 +936,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Dedos de los pies</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -964,7 +953,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Tronco</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -1002,7 +991,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Senos</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -1028,7 +1017,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Hombros </b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -1072,7 +1061,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Caderas</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -1089,7 +1078,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Línea de la cintura</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -1109,7 +1098,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Indicaciones anatómicas</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -1141,7 +1130,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Articulaciones</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -1158,7 +1147,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Ropas</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -1235,7 +1224,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Botones</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -1282,7 +1271,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Bolsillos</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -1299,7 +1288,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Corbata</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -1328,7 +1317,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Zapato</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -1357,7 +1346,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Sombrero</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -1377,7 +1366,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Otros símbolos</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
@@ -1416,7 +1405,7 @@
                     </div>
 
                     <div class="carousel-item">
-                        <div class="caja checkbox formulario ">
+                        <div class=" formulario ">
 
                             <h3 class="d-flex justify-content-center"> <b>Indicador: Postura</b></h3>
                             <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
