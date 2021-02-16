@@ -1,38 +1,1520 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--script-->
+<html>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script>
-        function firstIndicator(){
-            document.getElementById("cabezaLabel").innerHTML=
-            ("El indicador seleccionado es: " + cabeza.cabezaSelect[cabeza.cabezaSelect.selectedIndex].text)
-        }if firstIndicator == true => document.getElementById("newDiv");
-
-       
-
-    </script> 
-    <title>Test Figura Humana</title>
-</head>
+        ScrollReveal({ reset: false });
+    </script>
 <body>
-    <form name="cabeza">
-        <select name="cabezaSelect" onchange="firstIndicator()">
-            <option value="grande">Grande y redonda</option>
-            <option value="excesivamenteGrande">Excesivamente grande</option>
-            <option value="pequeña">Pequeña</option>
-            <option value="ultimoRasgoDibujado">Último rasgo dibujado</option>
-        </select>
-        <!-- <input type="submit"> -->
-      </form>   
-      <label id="cabezaLabel"></label>
-    
-    
-    <div id="newDiv">
 
+    <style>
 
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+    
+        body{
+            font-size: 16px;
+            background: #fff;
+            font-family: "Roboto";
+            overflow: hidden;
+            overflow-x: hidden;
+    
+        }
+    
+        /* .container{
+            width: 800px;
+            height: 500px;
+            background: #fff;
+            padding: 40px;
+            margin: 20px auto;
+        } */
+    
+        .formulario{
         
+            overflow-y: scroll;
+            /* width: 800px; */
+            height: 500px;
+            background: #fff;
+            /* padding: 40px; */
+            text-align: center;
+            
+            
+        }
+    
+    
+        .formulario input[type="checkbox"]{
+            display: none;
+        }
+    
+        .formulario .checkbox label{
+            color: #0774D9;
+            padding: 5px 15px 5px 51px;
+            display: inline-block;
+            position: relative;
+            font-size: 1em;
+            border-radius: 3px;
+            cursor: pointer;
+            -o-transition: all 0.3s ease;
+        }
+    
+    
+        .formulario .checkbox label:hover{
+            background: rgba(0,116,217,0.1);
+        }
+    
+    
+        .formulario .checkbox label:before{
+            content: "";
+            width: 17px;
+            height: 17px;
+            display:inline-block;
+            background: none;
+            border: 3px solid #0774D9;
+            border-radius: 50%;
+            position: absolute;
+            left: 17px;
+            top: 8px;
+    
+        }
+    
+    
+        .formulario input[type="checkbox"]:checked + label{
+            padding: 5px 15px;
+            background: #0774D9;
+            border-radius: 2px;
+            color: #fff;
+    
+        }
+    
+        .formulario input[type="checkbox"]:checked + label:before{
+            display: none;
+        }
+    
+       
+        .carousel-control-prev {
+            background-color: blue;
+            z-index: 1;
+            cursor: pointer;
+            
+        }
+    
+        .carousel-control-next{
+            background-color: blue;
+            z-index: 1;
+            cursor: pointer;
+        }
+    
+        .p-carousel{
+            text-align: center;
+        }
+    
+    </style>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                    Orders
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    Products
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    Customers
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    Reports
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                    Integrations
+                    </a>
+                </li>
+                </ul>
+
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>Saved reports</span>
+                <a class="link-secondary" href="#" aria-label="Add a new report">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                </a>
+                </h6>
+                <ul class="nav flex-column mb-2">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    Current month
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    Last quarter
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    Social engagement
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    Year-end sale
+                    </a>
+                </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="">
+                <div id="myCarousel" class="carousel slide"  data-interval="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Cabeza</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt1" type="checkbox" onclick="checkData()">
+                            <label for="opt1" >Dibujada en primer lugar</label><br>
+
+                            <input id="opt2" type="checkbox" onclick="checkData()">
+                            <label for="opt2">Énfasis</label><br>
+
+                            <input id="opt3" type="checkbox" onclick="checkData()">
+                            <label for="opt3">Notablemente agrandada</label><br>
+
+                            <input id="opt4" type="checkbox" onclick="checkData()">
+                            <label for="opt4">Grande</label><br>
+
+                            <input id="opt5" type="checkbox" onclick="checkData()">
+                            <label for="opt5">Grande y rendonda</label><br>
+
+                            <input id="opt6" type="checkbox" onclick="checkData()">
+                            <label for="opt6">Excesivamente grande</label><br>
+
+                            <input id="opt7" type="checkbox" onclick="checkData()">
+                            <label for="opt7">Pequeña</label><br>
+
+                            <input id="opt8" type="checkbox" onclick="checkData()">
+                            <label for="opt8">Hacia delante</label><br>
+
+                            <input id="opt9" type="checkbox" onclick="checkData()">
+                            <label for="opt9">Inclinada hacia abajo</label><br>
+
+                            <input id="opt10" type="checkbox" onclick="checkData()">
+                            <label for="opt10">Inclinada hacia la derecha</label><br>
+
+                            <input id="opt11" type="checkbox" onclick="checkData()">
+                            <label for="opt11">Baja y brazo caído</label><br>
+
+                            <input id="opt12" type="checkbox" onclick="checkData()">
+                            <label for="opt12">Trazo intenso </label><br>
+
+                            <input id="opt13" type="checkbox" onclick="checkData()">
+                            <label for="opt13">Vistas frontas y lateral simultáneas</label><br>
+
+                            <input id="opt14" type="checkbox" onclick="checkData()">
+                            <label for="opt14">Geométrica</label><br>
+
+                            <input id="opt15" type="checkbox" onclick="checkData()">
+                            <label for="opt15">Último rasgo dibujado</label><br>
+
+                            <input id="opt16" type="checkbox" onclick="checkData()">
+                            <label for="opt16">Trazo tenue</label><br><br>
+                            
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Rostro</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt17" type="checkbox" onclick="checkData()">
+                            <label for="opt17" >Expresivo</label><br>
+
+                            <input id="opt18" type="checkbox" onclick="checkData()">
+                            <label for="opt18">De perfil</label><br>
+
+                            <input id="opt19" type="checkbox" onclick="checkData()">
+                            <label for="opt19">Mirada firme y dura</label><br>
+
+                            <input id="opt20" type="checkbox" onclick="checkData()">
+                            <label for="opt20">Énfasis</label><br>
+
+                            <input id="opt21" type="checkbox" onclick="checkData()">
+                            <label for="opt21">Con arrugas</label><br>
+
+                            <input id="opt22" type="checkbox" onclick="checkData()">
+                            <label for="opt22">Rasgos faciales omitidos (cara vacía)</label><br>
+
+                            <input id="opt23" type="checkbox" onclick="checkData()">
+                            <label for="opt23">Duplicidad facial (doble cara de frente y de perfil a la vez como un todo)</label><br>
+
+                            <input id="opt24" type="checkbox" onclick="checkData()">
+                            <label for="opt24">Mejor parte del dibujo</label><br>
+
+                            <input id="opt25" type="checkbox" onclick="checkData()">
+                            <label for="opt25">Peor parte del dibujo</label><br>
+
+                            <input id="opt26" type="checkbox" onclick="checkData()">
+                            <label for="opt26">Último rasgo dibujado</label><br>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Expresión facial</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt27" type="checkbox" onclick="checkData()">
+                            <label for="opt27" >Pandeada</label><br>
+
+                            <input id="opt28" type="checkbox" onclick="checkData()">
+                            <label for="opt28">Inexpresiva</label><br>
+
+                            <input id="opt29" type="checkbox" onclick="checkData()">
+                            <label for="opt29">Inexpresividad total</label><br>
+
+                            <input id="opt30" type="checkbox" onclick="checkData()">
+                            <label for="opt30">Mirada firme y sostenida</label><br>
+
+                            <input id="opt31" type="checkbox" onclick="checkData()">
+                            <label for="opt31">Sonriente</label><br>
+
+                            <input id="opt32" type="checkbox" onclick="checkData()">
+                            <label for="opt32">Mirada baja</label><br>
+
+                            <input id="opt33" type="checkbox" onclick="checkData()">
+                            <label for="opt33">Con rubor</label><br>
+
+                            <input id="opt34" type="checkbox" onclick="checkData()">
+                            <label for="opt34">Perfil mixto (vista de perfil y de frente simultánea)</label><br>
+
+                            <input id="opt35" type="checkbox" onclick="checkData()">
+                            <label for="opt35">Con máscara</label><br>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Boca</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt36" type="checkbox" onclick="checkData()">
+                            <label for="opt36">Omisión</label><br>
+
+                            <input id="opt37" type="checkbox" onclick="checkData()">
+                            <label for="opt37">Cóncava</label><br>
+
+                            <input id="opt38" type="checkbox" onclick="checkData()">
+                            <label for="opt38">Convexa</label><br>
+
+                            <input id="opt39" type="checkbox" onclick="checkData()">
+                            <label for="opt39">Línea hacia arriba</label><br>
+
+                            <input id="opt40" type="checkbox" onclick="checkData()">
+                            <label for="opt40">Formada por una línea</label><br>
+
+                            <input id="opt41" type="checkbox" onclick="checkData()">
+                            <label for="opt41">Pesada pero breve (comienzo de línea fuerte y al final muy débil)</label><br>
+
+                            <input id="opt42" type="checkbox" onclick="checkData()">
+                            <label for="opt42">Con dientes</label><br>
+
+                            <input id="opt43" type="checkbox" onclick="checkData()">
+                            <label for="opt43">Con lengua</label><br>
+
+                            <input id="opt44" type="checkbox" onclick="checkData()">
+                            <label for="opt44">Desplazada</label><br>
+
+                            <input id="opt45" type="checkbox" onclick="checkData()">
+                            <label for="opt45">Énfasis excesivo</label><br>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Labios</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt46" type="checkbox" onclick="checkData()">
+                            <label for="opt46">Gruesos (sensuales, hechos en la figura masculina)</label><br>
+
+                            <input id="opt47" type="checkbox" onclick="checkData()">
+                            <label for="opt47">Abultados</label><br>
+
+                            <input id="opt48" type="checkbox" onclick="checkData()">
+                            <label for="opt48">Arco de cupido</label><br>
+
+                            <input id="opt49" type="checkbox" onclick="checkData()">
+                            <label for="opt49">Objetos entre los labios</label><br>
+
+                            <input id="opt50" type="checkbox" onclick="checkData()">
+                            <label for="opt50">Haciendo una mueca</label><br>
+
+                            <input id="opt51" type="checkbox" onclick="checkData()">
+                            <label for="opt51">Labio inferior abarquillado</label><br>
+
+                            <input id="opt52" type="checkbox" onclick="checkData()">
+                            <label for="opt52">Hacia adelante</label><br>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Quijada</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt53" type="checkbox" onclick="checkData()">
+                            <label for="opt53">Mentón agrandado</label><br>
+
+                            <input id="opt54" type="checkbox" onclick="checkData()">
+                            <label for="opt54">Mentón agrandado y tendencia de perfil</label><br>
+
+                            <input id="opt55" type="checkbox" onclick="checkData()">
+                            <label for="opt55">Exagerada</label><br>
+
+                            <input id="opt56" type="checkbox" onclick="checkData()">
+                            <label for="opt56">Exagerada en el dibujo de la mujer hecha por un hombre</label><br>
+
+                            <input id="opt57" type="checkbox" onclick="checkData()">
+                            <label for="opt57">De perfil y borrada</label><br>
+
+                            <input id="opt58" type="checkbox" onclick="checkData()">
+                            <label for="opt58">De perfil y reforzada</label><br>
+
+                            <input id="opt59" type="checkbox" onclick="checkData()">
+                            <label for="opt59">De perfil y cambio de línea</label><br>
+
+                            <input id="opt60" type="checkbox" onclick="checkData()">
+                            <label for="opt60">De perfil y saliente</label><br>
+
+                            <input id="opt61" type="checkbox" onclick="checkData()">
+                            <label for="opt61">Cuadrada</label><br>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Ojos</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt62" type="checkbox" onclick="checkData()">
+                            <label for="opt62">Pequeña</label><br>
+
+                            <input id="opt63" type="checkbox" onclick="checkData()">
+                            <label for="opt63">Pequeños y órbita grande formada por una línea</label><br>
+
+                            <input id="opt64" type="checkbox" onclick="checkData()">
+                            <label for="opt64">Pequeños círculos que se repiten en el dibujo</label><br>
+
+                            <input id="opt65" type="checkbox" onclick="checkData()">
+                            <label for="opt65">Énfasis</label><br>
+
+                            <input id="opt66" type="checkbox" onclick="checkData()">
+                            <label for="opt66">Grandes y salientes, grandes y oscuros, grandes y amenazantes</label><br>
+
+                            <input id="opt67" type="checkbox" onclick="checkData()">
+                            <label for="opt67">Grandes y elaborados</label><br>
+
+                            <input id="opt68" type="checkbox" onclick="checkData()">
+                            <label for="opt68">Grandes y pestañas y tacón en el zapato (figura masculina)</label><br>
+
+                            <input id="opt69" type="checkbox" onclick="checkData()">
+                            <label for="opt69">Penetrantes</label><br>
+
+                            <input id="opt70" type="checkbox" onclick="checkData()">
+                            <label for="opt70">Furtivos</label><br>
+
+                            <input id="opt71" type="checkbox" onclick="checkData()">
+                            <label for="opt71">Mirada desviada</label><br>
+
+                            <input id="opt72" type="checkbox" onclick="checkData()">
+                            <label for="opt72">Cerrados</label><br>
+
+                            <input id="opt73" type="checkbox" onclick="checkData()">
+                            <label for="opt73">Cerrados y caídos</label><br>
+
+                            <input id="opt74" type="checkbox" onclick="checkData()">
+                            <label for="opt74">Separados</label><br>
+
+                            <input id="opt75" type="checkbox" onclick="checkData()">
+                            <label for="opt75">Guiño</label><br>
+
+                            <input id="opt76" type="checkbox" onclick="checkData()">
+                            <label for="opt76">Ceño</label><br>
+
+                            <input id="opt77" type="checkbox" onclick="checkData()">
+                            <label for="opt77">Vacíos</label><br>
+
+                            <input id="opt78" type="checkbox" onclick="checkData()">
+                            <label for="opt78">Omitidos</label><br>
+
+                            <input id="opt79" type="checkbox" onclick="checkData()">
+                            <label for="opt79">Párpados muy abiertos</label><br>
+
+                            <input id="opt80" type="checkbox" onclick="checkData()">
+                            <label for="opt80">Párpado superior escendido</label><br>
+
+                            <input id="opt81" type="checkbox" onclick="checkData()">
+                            <label for="opt81">Con gafas</label><br>
+
+                            <input id="opt82" type="checkbox" onclick="checkData()">
+                            <label for="opt82">Ojo central y cara de frente </label><br>
+
+                            <input id="opt83" type="checkbox" onclick="checkData()">
+                            <label for="opt83">Ojo central y cara de perfil</label><br>
+
+                            <input id="opt84" type="checkbox" onclick="checkData()">
+                            <label for="opt84">Mirada fija</label><br>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Pelo</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt85" type="checkbox" onclick="checkData()">
+                            <label for="opt85" >Énfasis</label><br>
+
+                            <input id="opt86" type="checkbox" onclick="checkData()">
+                            <label for="opt86">Vigor del sombreado</label><br>
+
+                            <input id="opt87" type="checkbox" onclick="checkData()">
+                            <label for="opt87">Abundante y libre</label><br>
+
+                            <input id="opt88" type="checkbox" onclick="checkData()">
+                            <label for="opt88">Exuberante (dibujado por mujer)</label><br>
+
+                            <input id="opt89" type="checkbox" onclick="checkData()">
+                            <label for="opt89">Abundante y desordenado en el dibujo de la mujer y cuidadoso en el dibujo del hombre</label><br>
+
+                            <input id="opt90" type="checkbox" onclick="checkData()">
+                            <label for="opt90">Ralo</label><br>
+
+                            <input id="opt91" type="checkbox" onclick="checkData()">
+                            <label for="opt91">Calvo y con patillas</label><br>
+
+                            <input id="opt92" type="checkbox" onclick="checkData()">
+                            <label for="opt92">Trazo firme e ininterrumpido</label><br>
+
+                            <input id="opt93" type="checkbox" onclick="checkData()">
+                            <label for="opt93">Del centro de la cabeza hacia el cuerpo</label><br>
+
+                            <input id="opt94" type="checkbox" onclick="checkData()">
+                            <label for="opt94">Controlado</label><br>
+
+                            <input id="opt95" type="checkbox" onclick="checkData()">
+                            <label for="opt95">Desordenado</label><br>
+
+                            <input id="opt96" type="checkbox" onclick="checkData()">
+                            <label for="opt96">Sombreado y de forma pobre</label><br>
+
+                            <input id="opt97" type="checkbox" onclick="checkData()">
+                            <label for="opt97">Ondulado y con otros detalles tales como joyas</label><br>
+
+                            <input id="opt98" type="checkbox" onclick="checkData()">
+                            <label for="opt98">Peinado artificial</label><br>
+
+                            <input id="opt99" type="checkbox" onclick="checkData()">
+                            <label for="opt99">Flequillo y pestañas maquilladas</label><br>
+
+                            <input id="opt100" type="checkbox" onclick="checkData()">
+                            <label for="opt100">Con sombrero</label><br>
+
+                            <input id="opt101" type="checkbox" onclick="checkData()">
+                            <label for="opt101">Varón con sombrero y mujer con pelo destacado</label><br>
+
+                            <input id="opt102" type="checkbox" onclick="checkData()">
+                            <label for="opt102">Insistencia en la raya del pelo (hecho or hombre)</label><br>
+
+                            <input id="opt103" type="checkbox" onclick="checkData()">
+                            <label for="opt103">Pelo en la quijada</label><br>
+
+                            <input id="opt104" type="checkbox" onclick="checkData()">
+                            <label for="opt104">Barba</label><br>
+
+                            <input id="opt105" type="checkbox" onclick="checkData()">
+                            <label for="opt105">Barba abundante</label><br>
+
+                            <input id="opt106" type="checkbox" onclick="checkData()">
+                            <label for="opt106">Barba larga y cuidada</label><br>
+
+                            <input id="opt107" type="checkbox" onclick="checkData()">
+                            <label for="opt107">Bigote</label><br>
+
+                            <input id="opt108" type="checkbox" onclick="checkData()">
+                            <label for="opt108">Bigote con figura débil</label><br>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Cejas</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt109" type="checkbox" onclick="checkData()">
+                            <label for="opt109">Arreglada</label><br>
+
+                            <input id="opt110" type="checkbox" onclick="checkData()">
+                            <label for="opt110">Peluda</label><br>
+
+                            <input id="opt111" type="checkbox" onclick="checkData()">
+                            <label for="opt111">Levantada</label><br>
+
+                            <input id="opt112" type="checkbox" onclick="checkData()">
+                            <label for="opt112">Ambas levantadas</label><br>
+
+                            <input id="opt113" type="checkbox" onclick="checkData()">
+                            <label for="opt113">Caída</label><br>
+
+                            <input id="opt114" type="checkbox" onclick="checkData()">
+                            <label for="opt114">Trágicas</label><br>
+
+                            <input id="opt115" type="checkbox" onclick="checkData()">
+                            <label for="opt115">En el dibujo del hombre y no en el de la mujer (hecho por hombre)</label><br>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Orejas</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt116" type="checkbox" onclick="checkData()">
+                            <label for="opt116">Destacada por: énfasis</label><br>
+
+                            <input id="opt117" type="checkbox" onclick="checkData()">
+                            <label for="opt117">Destacada por: tamaño, forma, colocación</label><br>
+
+                            <input id="opt118" type="checkbox" onclick="checkData()">
+                            <label for="opt118">Destacada por: reforzamiento, borraduras</label><br>
+
+                            <input id="opt119" type="checkbox" onclick="checkData()">
+                            <label for="opt119">Destacada por: transparencia a través del pelo</label><br>
+
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Nariz</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt120" type="checkbox" onclick="checkData()">
+                            <label for="opt120">Énfasis</label><br>
+
+                            <input id="opt121" type="checkbox" onclick="checkData()">
+                            <label for="opt121">Refuerzo</label><br>
+
+                            <input id="opt122" type="checkbox" onclick="checkData()">
+                            <label for="opt122">Agrandamiento</label><br>
+
+                            <input id="opt123" type="checkbox" onclick="checkData()">
+                            <label for="opt123">Reducción</label><br>
+
+                            <input id="opt124" type="checkbox" onclick="checkData()">
+                            <label for="opt124">Borraduras</label><br>
+
+                            <input id="opt125" type="checkbox" onclick="checkData()">
+                            <label for="opt125">Tachaduras</label><br>
+
+                            <input id="opt126" type="checkbox" onclick="checkData()">
+                            <label for="opt126">Excesivamente grande</label><br>
+
+                            <input id="opt127" type="checkbox" onclick="checkData()">
+                            <label for="opt127">Ancha-abocinada</label><br>
+
+                            <input id="opt128" type="checkbox" onclick="checkData()">
+                            <label for="opt128">Excesivamente larga</label><br>
+
+                            <input id="opt129" type="checkbox" onclick="checkData()">
+                            <label for="opt129">Ausencia</label><br>
+
+                            <input id="opt130" type="checkbox" onclick="checkData()">
+                            <label for="opt130">Sombreada</label><br>
+
+                            <input id="opt131" type="checkbox" onclick="checkData()">
+                            <label for="opt131">Cortada</label><br>
+
+                            <input id="opt132" type="checkbox" onclick="checkData()">
+                            <label for="opt132">En gancho</label><br>
+
+                            <input id="opt133" type="checkbox" onclick="checkData()">
+                            <label for="opt133">Énfasis en las ventanas</label><br>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Cuello</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt134" type="checkbox" onclick="checkData()">
+                            <label for="opt134">Conflictivo</label><br>
+
+                            <input id="opt135" type="checkbox" onclick="checkData()">
+                            <label for="opt135">Omitido</label><br>
+
+                            <input id="opt136" type="checkbox" onclick="checkData()">
+                            <label for="opt136">Destacado</label><br>
+
+                            <input id="opt137" type="checkbox" onclick="checkData()">
+                            <label for="opt137">Largo</label><br>
+
+                            <input id="opt138" type="checkbox" onclick="checkData()">
+                            <label for="opt138">Alto y delgado</label><br>
+
+                            <input id="opt139" type="checkbox" onclick="checkData()">
+                            <label for="opt139">Estrecho</label><br>
+
+                            <input id="opt140" type="checkbox" onclick="checkData()">
+                            <label for="opt140">Corto</label><br>
+
+                            <input id="opt141" type="checkbox" onclick="checkData()">
+                            <label for="opt141">Cuello femenino más largo que el masculino (hecho por varón)</label><br>
+
+                            <input id="opt142" type="checkbox" onclick="checkData()">
+                            <label for="opt142">Inclinada</label><br>
+
+                            <input id="opt143" type="checkbox" onclick="checkData()">
+                            <label for="opt143">Énfasis</label><br>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Brazos</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt144" type="checkbox" onclick="checkData()">
+                            <label for="opt144">Ausencia</label><br>
+
+                            <input id="opt145" type="checkbox" onclick="checkData()">
+                            <label for="opt145">Ausencia en el dibujo femenino</label><br>
+
+                            <input id="opt146" type="checkbox" onclick="checkData()">
+                            <label for="opt146">Largos</label><br>
+
+                            <input id="opt147" type="checkbox" onclick="checkData()">
+                            <label for="opt147">Excesivamente largos</label><br>
+
+                            <input id="opt148" type="checkbox" onclick="checkData()">
+                            <label for="opt148">Separados</label><br>
+
+                            <input id="opt149" type="checkbox" onclick="checkData()">
+                            <label for="opt149">Largo en la figura femenina</label><br>
+
+                            <input id="opt150" type="checkbox" onclick="checkData()">
+                            <label for="opt150">Apretados contra el cuerpo y manos en los bolsillos</label><br>
+
+                            <input id="opt151" type="checkbox" onclick="checkData()">
+                            <label for="opt151">Colgando flexiblemente a los lados del cuerpo</label><br>
+
+                            <input id="opt152" type="checkbox" onclick="checkData()">
+                            <label for="opt152">En jarras</label><br>
+
+                            <input id="opt153" type="checkbox" onclick="checkData()">
+                            <label for="opt153">Extendidos, en ángulo recto con el cuerpo y mecánicos</label><br>
+
+                            <input id="opt154" type="checkbox" onclick="checkData()">
+                            <label for="opt154">Cruzados</label><br>
+
+                            <input id="opt155" type="checkbox" onclick="checkData()">
+                            <label for="opt155">Rígidos</label><br>
+
+                            <input id="opt156" type="checkbox" onclick="checkData()">
+                            <label for="opt156">Frágiles y/o delgados</label><br>
+                            
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Manos</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt157" type="checkbox" onclick="checkData()">
+                            <label for="opt157">Imprecisas</label><br>
+
+                            <input id="opt158" type="checkbox" onclick="checkData()">
+                            <label for="opt158">Tamaño exagerado</label><br>
+
+                            <input id="opt159" type="checkbox" onclick="checkData()">
+                            <label for="opt159">Excesivamente grande y más de cinco dedos</label><br>
+
+                            <input id="opt160" type="checkbox" onclick="checkData()">
+                            <label for="opt160">Oscurecidas</label><br>
+
+                            <input id="opt161" type="checkbox" onclick="checkData()">
+                            <label for="opt161">Excesivamente sombreadas</label><br>
+
+                            <input id="opt162" type="checkbox" onclick="checkData()">
+                            <label for="opt162">Enguantadas</label><br>
+
+                            <input id="opt163" type="checkbox" onclick="checkData()">
+                            <label for="opt163">Ocultas</label><br>
+
+                            <input id="opt164" type="checkbox" onclick="checkData()">
+                            <label for="opt164">En los bolsillos</label><br>
+
+                            <input id="opt165" type="checkbox" onclick="checkData()">
+                            <label for="opt165">Dedos, uñas y nudillos cuidadosamente dibujados</label><br>
+
+                            <input id="opt166" type="checkbox" onclick="checkData()">
+                            <label for="opt166">En la región genital</label><br>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Dedos de la mano</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt167" type="checkbox" onclick="checkData()">
+                            <label for="opt167">Sin mano</label><br>
+
+                            <input id="opt168" type="checkbox" onclick="checkData()">
+                            <label for="opt168">Sombreados</label><br>
+
+                            <input id="opt170" type="checkbox" onclick="checkData()">
+                            <label for="opt170">Bien señalados, pero cerrados por una línea</label><br>
+
+                            <input id="opt171" type="checkbox" onclick="checkData()">
+                            <label for="opt171">Anormalmente largos</label><br>
+
+                            <input id="opt172" type="checkbox" onclick="checkData()">
+                            <label for="opt172">Cortos</label><br>
+
+                            <input id="opt173" type="checkbox" onclick="checkData()">
+                            <label for="opt173">Mutilados</label><br>
+
+                            <input id="opt174" type="checkbox" onclick="checkData()">
+                            <label for="opt174">En forma de pétalos (cortos y redondos)</label><br>
+
+                            <input id="opt175" type="checkbox" onclick="checkData()">
+                            <label for="opt175">En forma de lanza</label><br>
+
+                            <input id="opt176" type="checkbox" onclick="checkData()">
+                            <label for="opt176">En forma de garra</label><br>
+
+                            <input id="opt177" type="checkbox" onclick="checkData()">
+                            <label for="opt177">En forma de herramienta mecánica</label><br>
+
+                            <input id="opt178" type="checkbox" onclick="checkData()">
+                            <label for="opt178">Más de 5 dedos</label><br>
+
+                            <input id="opt179" type="checkbox" onclick="checkData()">
+                            <label for="opt179">Índice o pulgar con trazado especial o rígidos</label><br>
+
+                            <input id="opt180" type="checkbox" onclick="checkData()">
+                            <label for="opt180">Puño cerrado</label><br>
+
+                            <input id="opt181" type="checkbox" onclick="checkData()">
+                            <label for="opt181">Puño cerrado y brazo entendido</label><br>
+
+                            <input id="opt182" type="checkbox" onclick="checkData()">
+                            <label for="opt182">Puño cerrado y presionado contra el cuerpo</label><br>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Piernas</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt183" type="checkbox" onclick="checkData()">
+                            <label for="opt183">Resistencia a dibujarlas u omitidas</label><br>
+
+                            <input id="opt184" type="checkbox" onclick="checkData()">
+                            <label for="opt184">Primera parte del dibujo</label><br>
+
+                            <input id="opt185" type="checkbox" onclick="checkData()">
+                            <label for="opt185">Más intensa que el resto del dibujo</label><br>
+
+                            <input id="opt186" type="checkbox" onclick="checkData()">
+                            <label for="opt186">Piernas pequeñas, delgadas y cuerpos grandes</label><br>
+
+                            <input id="opt187" type="checkbox" onclick="checkData()">
+                            <label for="opt187">Sombreadas</label><br>
+
+                            <input id="opt188" type="checkbox" onclick="checkData()">
+                            <label for="opt188">Transparencia a través de los pantalones</label><br>
+
+                            <input id="opt189" type="checkbox" onclick="checkData()">
+                            <label for="opt189">Sin ropa</label><br>
+
+                            <input id="opt190" type="checkbox" onclick="checkData()">
+                            <label for="opt190">Piernas formadas por una especie de falda, indicadas por una línea vertical, dando aspecto de pantalones</label><br>
+
+                            <input id="opt191" type="checkbox" onclick="checkData()">
+                            <label for="opt191">Apretadas</label><br>
+                        
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Pies</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt192" type="checkbox" onclick="checkData()">
+                            <label for="opt192">Énfasis</label><br>
+
+                            <input id="opt193" type="checkbox" onclick="checkData()">
+                            <label for="opt193">Refuerzo</label><br>
+
+                            <input id="opt194" type="checkbox" onclick="checkData()">
+                            <label for="opt194">Agrandamiento</label><br>
+
+                            <input id="opt195" type="checkbox" onclick="checkData()">
+                            <label for="opt195">Reducción</label><br>
+
+                            <input id="opt196" type="checkbox" onclick="checkData()">
+                            <label for="opt196">Borraduras</label><br>
+
+                            <input id="opt197" type="checkbox" onclick="checkData()">
+                            <label for="opt197">Tachaduras</label><br>
+
+                            <input id="opt198" type="checkbox" onclick="checkData()">
+                            <label for="opt198">Excesivamente grande</label><br>
+
+                            <input id="opt199" type="checkbox" onclick="checkData()">
+                            <label for="opt199">Ancha-abocinada</label><br>
+
+                            <input id="opt200" type="checkbox" onclick="checkData()">
+                            <label for="opt200">Excesivamente larga</label><br>
+
+                            <input id="opt201" type="checkbox" onclick="checkData()">
+                            <label for="opt201">Ausencia</label><br>
+
+                            <input id="opt202" type="checkbox" onclick="checkData()">
+                            <label for="opt202">Sombreada</label><br>
+
+                            <input id="opt203" type="checkbox" onclick="checkData()">
+                            <label for="opt203">Cortada</label><br>
+
+                            <input id="opt204" type="checkbox" onclick="checkData()">
+                            <label for="opt204">En gancho</label><br>
+
+                            <input id="opt205" type="checkbox" onclick="checkData()">
+                            <label for="opt205">Énfasis en las ventanas</label><br>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Dedos de los pies</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt206" type="checkbox" onclick="checkData()">
+                            <label for="opt206">Señalados en figura no desnuda</label><br>
+
+                            <input id="opt207" type="checkbox" onclick="checkData()">
+                            <label for="opt207">Cerrados por una línea</label><br>
+
+                            <input id="opt208" type="checkbox" onclick="checkData()">
+                            <label for="opt208">Uñas pintadas y zapatos calados</label><br>
+                        
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Tronco</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt209" type="checkbox" onclick="checkData()">
+                            <label for="opt209">Rechazo a cerrar la parte inferior del tronco o mal cerrado</label><br>
+
+                            <input id="opt210" type="checkbox" onclick="checkData()">
+                            <label for="opt210">Parte superior de dos líneas paralelas</label><br>
+
+                            <input id="opt211" type="checkbox" onclick="checkData()">
+                            <label for="opt211">Redondeado</label><br>
+
+                            <input id="opt212" type="checkbox" onclick="checkData()">
+                            <label for="opt212">Redondeado y cintura de avispa en el dibujo del varón</label><br>
+
+                            <input id="opt213" type="checkbox" onclick="checkData()">
+                            <label for="opt213">Anguloso</label><br>
+
+                            <input id="opt214" type="checkbox" onclick="checkData()">
+                            <label for="opt214">Sombreado ansiosamente en el de la mujer y sin importancia en el masculino (hecho por varón)</label><br>
+
+                            <input id="opt215" type="checkbox" onclick="checkData()">
+                            <label for="opt215">Reforzamiento de la línea del pecho</label><br>
+
+                            <input id="opt216" type="checkbox" onclick="checkData()">
+                            <label for="opt216">Contorno confuso en el dibujo de mujeres</label><br>
+
+                            <input id="opt217" type="checkbox" onclick="checkData()">
+                            <label for="opt217">Delgado, representando al ropio sexo</label><br>
+
+                            <input id="opt218" type="checkbox" onclick="checkData()">
+                            <label for="opt218">Pecho hundido y hombros hacia adelante</label><br>
+                        
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Senos</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt219" type="checkbox" onclick="checkData()">
+                            <label for="opt219">Borraduras</label><br>
+
+                            <input id="opt220" type="checkbox" onclick="checkData()">
+                            <label for="opt220">Agrandados</label><br>
+
+                            <input id="opt221" type="checkbox" onclick="checkData()">
+                            <label for="opt221">Acentuados</label><br>
+
+                            <input id="opt222" type="checkbox" onclick="checkData()">
+                            <label for="opt222">Acentuados y caderas desarrolladas</label><br>
+
+                            <input id="opt223" type="checkbox" onclick="checkData()">
+                            <label for="opt223">Desplazados hacia el centro</label><br>
+
+                            <input id="opt224" type="checkbox" onclick="checkData()">
+                            <label for="opt224">Sombreamiento</label><br>
+                        
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Hombros </b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt225" type="checkbox" onclick="checkData()">
+                            <label for="opt225">Destacados (hecho por un hombre)</label><br>
+
+                            <input id="opt226" type="checkbox" onclick="checkData()">
+                            <label for="opt226">Destacados (hecho por una mujer)</label><br>
+
+                            <input id="opt227" type="checkbox" onclick="checkData()">
+                            <label for="opt227">Exagerados (en la figura masculina)</label><br>
+
+                            <input id="opt228" type="checkbox" onclick="checkData()">
+                            <label for="opt228">Poderosos y cuerpo débil</label><br>
+
+                            <input id="opt229" type="checkbox" onclick="checkData()">
+                            <label for="opt229">Borraduras</label><br>
+
+                            <input id="opt230" type="checkbox" onclick="checkData()">
+                            <label for="opt230">Reforzados</label><br>
+
+                            <input id="opt231" type="checkbox" onclick="checkData()">
+                            <label for="opt231">Redondeado</label><br>
+
+                            <input id="opt232" type="checkbox" onclick="checkData()">
+                            <label for="opt232">Inciertos</label><br>
+
+                            <input id="opt233" type="checkbox" onclick="checkData()">
+                            <label for="opt233">Levantados</label><br>
+
+                            <input id="opt234" type="checkbox" onclick="checkData()">
+                            <label for="opt234">Encogidos</label><br>
+
+                            <input id="opt235" type="checkbox" onclick="checkData()">
+                            <label for="opt235">Encorvados</label><br>
+
+                            <input id="opt236" type="checkbox" onclick="checkData()">
+                            <label for="opt236">Anchos en figura femenina (hecho por un hombre)</label><br>
+                        
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Caderas</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt237" type="checkbox" onclick="checkData()">
+                            <label for="opt237">Conflictivas en la figura masculina (hecha por hombre)</label><br>
+
+                            <input id="opt238" type="checkbox" onclick="checkData()">
+                            <label for="opt238">Confusas, interrumpidas, cambios de línea, redondeadas, ampias</label><br>
+
+                            <input id="opt239" type="checkbox" onclick="checkData()">
+                            <label for="opt239">Énfasis en la figura femenina (hecho por una mujer)</label><br>
+                        
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Línea de la cintura</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt240" type="checkbox" onclick="checkData()">
+                            <label for="opt240">Indicada por líneas</label><br>
+
+                            <input id="opt241" type="checkbox" onclick="checkData()">
+                            <label for="opt241">Acentuada</label><br>
+
+                            <input id="opt242" type="checkbox" onclick="checkData()">
+                            <label for="opt242">Excesivamente apretada</label><br>
+
+                            <input id="opt243" type="checkbox" onclick="checkData()">
+                            <label for="opt243">Ceñida y tronco redondeado en la figura masculina (hecha por un hombre)</label><br>
+                        
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Indicaciones anatómicas</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt244" type="checkbox" onclick="checkData()">
+                            <label for="opt244">Indicadas por líneas en el pecho o en la región pélvica</label><br>
+
+                            <input id="opt245" type="checkbox" onclick="checkData()">
+                            <label for="opt245">Líneas semejantes a costillas</label><br>
+
+                            <input id="opt246" type="checkbox" onclick="checkData()">
+                            <label for="opt246">Órganos sexuales</label><br>
+
+                            <input id="opt247" type="checkbox" onclick="checkData()">
+                            <label for="opt247">Énfasis en los órganos sexuales y dibujos desnudos</label><br>
+
+                            <input id="opt248" type="checkbox" onclick="checkData()">
+                            <label for="opt248">Figuras desnudas idealizadas</label><br>
+
+                            <input id="opt249" type="checkbox" onclick="checkData()">
+                            <label for="opt249">Figuras desnudas</label><br>
+
+                            <input id="opt250" type="checkbox" onclick="checkData()">
+                            <label for="opt250">Transparencias a través de las ropas en figura femenina (hecha por un hombre)</label><br>
+
+                            <input id="opt251" type="checkbox" onclick="checkData()">
+                            <label for="opt251">Contorno del cuerpo femenino transparente</label><br>
+                        
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Articulaciones</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt252" type="checkbox" onclick="checkData()">
+                            <label for="opt252">Indicadas: codos, rodillas, hombros</label><br>
+
+                            <input id="opt253" type="checkbox" onclick="checkData()">
+                            <label for="opt253">Énfasis y dibujo agresivo de la mujer</label><br>
+
+                            <input id="opt254" type="checkbox" onclick="checkData()">
+                            <label for="opt254">Cuerpo adornado con músculos</label><br>
+                        
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Ropas</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt255" type="checkbox" onclick="checkData()">
+                            <label for="opt255">Poca importancia</label><br>
+
+                            <input id="opt256" type="checkbox" onclick="checkData()">
+                            <label for="opt256">Finas y ligeras</label><br>
+
+                            <input id="opt257" type="checkbox" onclick="checkData()">
+                            <label for="opt257">Ausencia en el dibujo femenino</label><br>
+
+                            <input id="opt258" type="checkbox" onclick="checkData()">
+                            <label for="opt258">Insistencia</label><br>
+
+                            <input id="opt259" type="checkbox" onclick="checkData()">
+                            <label for="opt259">Satisfacción en dibujarlas</label><br>
+
+                            <input id="opt260" type="checkbox" onclick="checkData()">
+                            <label for="opt260">Como medio de adorno del dibujo</label><br>
+
+                            <input id="opt261" type="checkbox" onclick="checkData()">
+                            <label for="opt261">Grandes</label><br>
+
+                            <input id="opt262" type="checkbox" onclick="checkData()">
+                            <label for="opt262">Excesivas</label><br>
+
+                            <input id="opt263" type="checkbox" onclick="checkData()">
+                            <label for="opt263">Vestido femenino hasta los tobillos</label><br>
+
+                            <input id="opt264" type="checkbox" onclick="checkData()">
+                            <label for="opt264">Protectoras (dibujos abrigados)</label><br>
+
+                            <input id="opt265" type="checkbox" onclick="checkData()">
+                            <label for="opt265">Abundante en la figura femenina y énfasis en los rasgos sexuales de la ropa (hecho por un hombre)</label><br>
+                            
+                            <input id="opt266" type="checkbox" onclick="checkData()">
+                            <label for="opt266">Abundante en la figura femenina y énfasis en cosméticos y adornos (heho por una mujer)</label><br>
+                            
+                            <input id="opt267" type="checkbox" onclick="checkData()">
+                            <label for="opt267">Apretadas</label><br>
+                            
+                            <input id="opt268" type="checkbox" onclick="checkData()">
+                            <label for="opt268">Transparentes y órganos internos</label><br>
+
+                            <input id="opt269" type="checkbox" onclick="checkData()">
+                            <label for="opt269">Ropa interior</label><br>
+
+                            <input id="opt270" type="checkbox" onclick="checkData()">
+                            <label for="opt270">Con rayas en el área genital</label><br>
+
+                            <input id="opt271" type="checkbox" onclick="checkData()">
+                            <label for="opt271">Ropa de adulto en sujetos jóvenes</label><br>
+
+                            <input id="opt272" type="checkbox" onclick="checkData()">
+                            <label for="opt272">Figura femenina con pantalones (hecha por una mujer)</label><br>
+
+                            <input id="opt273" type="checkbox" onclick="checkData()">
+                            <label for="opt273">Cuellos altos de camisa</label><br>
+
+                            <input id="opt274" type="checkbox" onclick="checkData()">
+                            <label for="opt274">Uniformes</label><br>
+
+                            <input id="opt275" type="checkbox" onclick="checkData()">
+                            <label for="opt275">Trajes nacionalistas o tradicionales</label><br>
+
+                            <input id="opt276" type="checkbox" onclick="checkData()">
+                            <label for="opt276">Moda</label><br>
+
+                            <input id="opt277" type="checkbox" onclick="checkData()">
+                            <label for="opt277">Muy antiguas</label><br>
+
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Botones</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt278" type="checkbox" onclick="checkData()">
+                            <label for="opt278">Formados por una línea media</label><br>
+
+                            <input id="opt279" type="checkbox" onclick="checkData()">
+                            <label for="opt279">Énfasis</label><br>
+
+                            <input id="opt280" type="checkbox" onclick="checkData()">
+                            <label for="opt280">Sombreamiento</label><br>
+
+                            <input id="opt281" type="checkbox" onclick="checkData()">
+                            <label for="opt281">Colocación inapropiada</label><br>
+
+                            <input id="opt282" type="checkbox" onclick="checkData()">
+                            <label for="opt282">Grandes sombreados y en la mitad inferior del tronco</label><br>
+
+                            <input id="opt283" type="checkbox" onclick="checkData()">
+                            <label for="opt283">Colocados del lado izquierdo</label><br>
+
+                            <input id="opt284" type="checkbox" onclick="checkData()">
+                            <label for="opt284">Colocados del lado derecho</label><br>
+
+                            <input id="opt285" type="checkbox" onclick="checkData()">
+                            <label for="opt285">Colocados en los senos</label><br>
+
+                            <input id="opt286" type="checkbox" onclick="checkData()">
+                            <label for="opt286">En forma de hebilla en el ombligo</label><br>
+
+                            <input id="opt287" type="checkbox" onclick="checkData()">
+                            <label for="opt287">En puños y zonas poco observables</label><br>
+
+                            <input id="opt288" type="checkbox" onclick="checkData()">
+                            <label for="opt288">En uniformes</label><br>
+
+                            <input id="opt289" type="checkbox" onclick="checkData()">
+                            <label for="opt289">Dibujo abotonado</label><br>
+
+                            <input id="opt290" type="checkbox" onclick="checkData()">
+                            <label for="opt290">Dibujo desabotonado</label><br>
+                            
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Bolsillos</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt291" type="checkbox" onclick="checkData()">
+                            <label for="opt291">Énfasis</label><br>
+
+                            <input id="opt292" type="checkbox" onclick="checkData()">
+                            <label for="opt292">Tratamiento especial</label><br>
+
+                            <input id="opt293" type="checkbox" onclick="checkData()">
+                            <label for="opt293">Dibujado por adolescentes</label><br>
+                        
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Corbata</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt294" type="checkbox" onclick="checkData()">
+                            <label for="opt294">Cuidada y figura afeminada</label><br>
+
+                            <input id="opt295" type="checkbox" onclick="checkData()">
+                            <label for="opt295">Dibujo femeino con corbata (hecha por una mujer)</label><br>
+
+                            <input id="opt296" type="checkbox" onclick="checkData()">
+                            <label for="opt296">Pequeña e imprecisa</label><br>
+
+                            <input id="opt297" type="checkbox" onclick="checkData()">
+                            <label for="opt297">Énfasis exagerado</label><br>
+
+                            <input id="opt298" type="checkbox" onclick="checkData()">
+                            <label for="opt298">Larga y destacada</label><br>
+
+                            <input id="opt299" type="checkbox" onclick="checkData()">
+                            <label for="opt299">Flotando en el aire</label><br>
+
+                            <input id="opt300" type="checkbox" onclick="checkData()">
+                            <label for="opt300">Pañuelo en el bolsillo superior</label><br>
+                        
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Zapato</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt301" type="checkbox" onclick="checkData()">
+                            <label for="opt301">Detallado</label><br>
+
+                            <input id="opt302" type="checkbox" onclick="checkData()">
+                            <label for="opt302">Forma de pene (hecho por un hombre)</label><br>
+
+                            <input id="opt303" type="checkbox" onclick="checkData()">
+                            <label for="opt303">Forma de pene (hecho por una mujer)</label><br>
+
+                            <input id="opt304" type="checkbox" onclick="checkData()">
+                            <label for="opt304">Con borraduras (hecho por un hombre)</label><br>
+
+                            <input id="opt305" type="checkbox" onclick="checkData()">
+                            <label for="opt305">Con cordones</label><br>
+
+                            <input id="opt306" type="checkbox" onclick="checkData()">
+                            <label for="opt306">Con hebillas</label><br>
+
+                            <input id="opt307" type="checkbox" onclick="checkData()">
+                            <label for="opt307">Con tacón (hecho por un hombre)</label><br>
+                        
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Sombrero</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt308" type="checkbox" onclick="checkData()">
+                            <label for="opt308">Señalado</label><br>
+
+                            <input id="opt309" type="checkbox" onclick="checkData()">
+                            <label for="opt309">Con ausencia de ropa</label><br>
+
+                            <input id="opt310" type="checkbox" onclick="checkData()">
+                            <label for="opt310">Transparente</label><br>
+
+                            <input id="opt311" type="checkbox" onclick="checkData()">
+                            <label for="opt311">En punta</label><br>
+                        
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Otros símbolos</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt312" type="checkbox" onclick="checkData()">
+                            <label for="opt312">Cigarro</label><br>
+
+                            <input id="opt313" type="checkbox" onclick="checkData()">
+                            <label for="opt313">Pipa</label><br>
+
+                            <input id="opt314" type="checkbox" onclick="checkData()">
+                            <label for="opt314">Pistola</label><br>
+
+                            <input id="opt315" type="checkbox" onclick="checkData()">
+                            <label for="opt315">Bastón</label><br>
+
+                            <input id="opt316" type="checkbox" onclick="checkData()">
+                            <label for="opt316">Paraguas</label><br>
+
+                            <input id="opt317" type="checkbox" onclick="checkData()">
+                            <label for="opt317">Paraguas abierto</label><br>
+
+                            <input id="opt318" type="checkbox" onclick="checkData()">
+                            <label for="opt318">Aros (dibujado por hombres)</label><br>
+
+                            <input id="opt319" type="checkbox" onclick="checkData()">
+                            <label for="opt319">Raya del pantalón en zona genital</label><br>
+
+                            <input id="opt320" type="checkbox" onclick="checkData()">
+                            <label for="opt320">Cartera en zona sexual</label><br>
+
+                            <input id="opt321" type="checkbox" onclick="checkData()">
+                            <label for="opt321">Escoba</label><br>
+                        
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="caja checkbox formulario ">
+
+                            <h3 class="d-flex justify-content-center"> <b>Indicador: Postura</b></h3>
+                            <h5 class="p-carousel">Selecciona los indicadores correspondientes al dibujo a analizar:</h5><br>
+                            
+                            <input id="opt322" type="checkbox" onclick="checkData()">
+                            <label for="opt322">Figuras erguidas y firmes</label><br>
+
+                            <input id="opt323" type="checkbox" onclick="checkData()">
+                            <label for="opt323">Inestables</label><br>
+
+                            <input id="opt324" type="checkbox" onclick="checkData()">
+                            <label for="opt324">Rígida</label><br>
+
+                            <input id="opt325" type="checkbox" onclick="checkData()">
+                            <label for="opt325">Figura con espalda derecha y poco flexible</label><br>
+
+                            <input id="opt326" type="checkbox" onclick="checkData()">
+                            <label for="opt326">Rigidez total y conflicto en la mano</label><br>
+
+                            <input id="opt327" type="checkbox" onclick="checkData()">
+                            <label for="opt327">Encogimiento del cuerpo</label><br>
+
+                            <input id="opt328" type="checkbox" onclick="checkData()">
+                            <label for="opt328">Figuras sentadas o recostadas</label><br>
+                        
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Siguiente</span>
+                </a>
+                </div>
+        
+        
+                <div id="buttons-app" class="d-flex justify-content-center mt-5">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary">Generar informe</button>
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    
+</div>
+
+<style>
+    #buttons-app{
+        /* margin-left: 150px; */
+    }
+</style>
+
+
+
+<br><br>
+
+
+
+
+<script>
+    function checkData() {
+        console.clear();
+        var selectedData = document.getElementsByTagName("input");
+        // console.log(selectedData[0]);
+        for(i = 0; i < selectedData.length; i++) {
+                // console.log(selectedData[i].id);
+                if (selectedData[i].checked){
+                    // console.log(selectedData[i]);
+                    switch(selectedData[i].id) {
+                        case "opt1":
+                            console.log("Apple is selected")
+                            break;
+                        case "opt2":
+                            console.log("Orange is selected")
+                            break;
+                        case "opt3":
+                            console.log("Pineapple is selected")
+                            break;
+                        case "opt4":
+                            console.log("Banana is selected")
+                            break;
+                        default:
+                            console.log("No options available")
+                    }
+                }
+        }
+    }
+</script>
+
 </body>
 </html>
