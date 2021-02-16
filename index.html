@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--script-->
+    <script>
+        function firstIndicator(){
+            document.getElementById("cabezaLabel").innerHTML=
+            ("El indicador seleccionado es: " + cabeza.cabezaSelect[cabeza.cabezaSelect.selectedIndex].text)
+        }if firstIndicator == true => document.getElementById("newDiv");
+
+       
+
+    </script> 
+    <title>Test Figura Humana</title>
+</head>
+<body>
+    <form name="cabeza">
+        <select name="cabezaSelect" onchange="firstIndicator()">
+            <option value="grande">Grande y redonda</option>
+            <option value="excesivamenteGrande">Excesivamente grande</option>
+            <option value="pequeña">Pequeña</option>
+            <option value="ultimoRasgoDibujado">Último rasgo dibujado</option>
+        </select>
+        <!-- <input type="submit"> -->
+      </form>   
+      <label id="cabezaLabel"></label>
+    
+    
+    <div id="newDiv">
+
+
+        
+    </div>
+</body>
+</html>
